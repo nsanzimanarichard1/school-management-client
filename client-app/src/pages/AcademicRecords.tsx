@@ -54,7 +54,7 @@ export default function AcademicRecords() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {attendance?.records?.map((r, i) => (
+                  {Array.isArray(attendance) && attendance.map((r: any, i: number) => (
                     <tr key={i}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm">{new Date(r.date).toLocaleDateString()}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm">{r.status}</td>

@@ -77,7 +77,7 @@ export default function FeeManagement() {
 
         <div className="card">
           <h3 className="text-xl font-semibold mb-4">Transaction History</h3>
-          {!history || history.length === 0 ? (
+          {!history || (Array.isArray(history) && history.length === 0) ? (
             <p className="text-gray-500">No transactions yet</p>
           ) : (
             <div className="overflow-x-auto">
@@ -92,7 +92,7 @@ export default function FeeManagement() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {history.map((item) => (
+                  {Array.isArray(history) && history.map((item: any) => (
                     <tr key={item.id}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm">{new Date(item.date).toLocaleDateString()}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm">{item.type}</td>
